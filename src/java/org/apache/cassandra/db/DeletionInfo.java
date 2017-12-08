@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Collections;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
@@ -290,12 +291,12 @@ public class DeletionInfo implements IMeasurableMemory
     // Use sparingly, not the most efficient thing
     public Iterator<RangeTombstone> rangeIterator()
     {
-        return ranges == null ? Iterators.<RangeTombstone>emptyIterator() : ranges.iterator();
+        return ranges == null ? Collections.<RangeTombstone>emptyIterator() : ranges.iterator();
     }
 
     public Iterator<RangeTombstone> rangeIterator(Composite start, Composite finish)
     {
-        return ranges == null ? Iterators.<RangeTombstone>emptyIterator() : ranges.iterator(start, finish);
+        return ranges == null ? Collections.<RangeTombstone>emptyIterator() : ranges.iterator(start, finish);
     }
 
     public RangeTombstone rangeCovering(Composite name)

@@ -20,6 +20,7 @@ package org.apache.cassandra.db;
 import java.io.*;
 import java.nio.ByteBuffer;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 import org.apache.cassandra.config.CFMetaData;
@@ -56,7 +57,7 @@ public class SliceByNamesReadCommand extends ReadCommand
     @Override
     public String toString()
     {
-        return Objects.toStringHelper(this)
+        return MoreObjects.toStringHelper(this)
                       .add("ksName", ksName)
                       .add("cfName", cfName)
                       .add("key", ByteBufferUtil.bytesToHex(key))

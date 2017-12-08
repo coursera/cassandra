@@ -70,7 +70,7 @@
     <condition property="version" value="${base.version}">
       <isset property="release"/>
     </condition>
-    <property name="version" value="${base.version}-SNAPSHOT"/>
+    <property name="version" value="${base.version}"/>
     <property name="version.properties.dir"
               value="${build.src.resources}/org/apache/cassandra/config/" />
     <property name="final.name" value="${ant.project.name}-${version}"/>
@@ -352,7 +352,7 @@
           <dependency groupId="org.xerial.snappy" artifactId="snappy-java" version="1.0.5"/>
           <dependency groupId="net.jpountz.lz4" artifactId="lz4" version="1.2.0"/>
           <dependency groupId="com.ning" artifactId="compress-lzf" version="0.8.4"/>
-          <dependency groupId="com.google.guava" artifactId="guava" version="16.0"/>
+          <dependency groupId="com.google.guava" artifactId="guava" version="18.0"/>
           <dependency groupId="commons-cli" artifactId="commons-cli" version="1.1"/>
           <dependency groupId="commons-codec" artifactId="commons-codec" version="1.2"/>
           <dependency groupId="org.apache.commons" artifactId="commons-lang3" version="3.1"/>
@@ -398,7 +398,7 @@
             <exclusion groupId="xerces" artifactId="xercesImpl"/>
           </dependency>
 
-          <dependency groupId="org.apache.cassandra" artifactId="cassandra-all" version="${version}" />
+          <dependency groupId="org.apache.cassandra" artifactId="cassandra-all-custom" version="${version}" />
           <dependency groupId="org.apache.cassandra" artifactId="cassandra-thrift" version="${version}" />
           <dependency groupId="com.yammer.metrics" artifactId="metrics-core" version="2.2.0" />
           <dependency groupId="com.addthis.metrics" artifactId="reporter-config" version="2.1.0" />
@@ -478,7 +478,7 @@
       <!-- now the pom's for artifacts being deployed to Maven Central -->
 
       <artifact:pom id="all-pom"
-                    artifactId="cassandra-all"
+                    artifactId="cassandra-all-custom"
                     url="http://cassandra.apache.org"
                     name="Apache Cassandra">
         <parent groupId="org.apache.cassandra"
@@ -1844,7 +1844,7 @@
              file="${build.dir}/${ant.project.name}-clientutil-${version}-javadoc.jar"
              classifier="javadoc"/>
 
-    <!-- the cassandra-all jar -->
+    <!-- the cassandra-all-custom jar -->
     <install pomFile="${build.dir}/${final.name}.pom"
              file="${build.dir}/${final.name}.jar"/>
     <install pomFile="${build.dir}/${final.name}.pom"

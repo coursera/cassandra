@@ -235,7 +235,7 @@ public class TokenMetadata
             UUID storedId = endpointToHostIdMap.get(endpoint);
             if ((storedId != null) && (!storedId.equals(hostId)))
                 logger.warn("Changing {}'s host ID from {} to {}", endpoint, storedId, hostId);
-    
+
             endpointToHostIdMap.forcePut(endpoint, hostId);
         }
         finally
@@ -812,7 +812,7 @@ public class TokenMetadata
     {
         if (ring.isEmpty())
             return includeMin ? Iterators.singletonIterator(StorageService.getPartitioner().getMinimumToken())
-                              : Iterators.<Token>emptyIterator();
+                              : Collections.<Token>emptyIterator();
 
         final boolean insertMin = includeMin && !ring.get(0).isMinimum();
         final int startIndex = firstTokenIndex(ring, start, insertMin);

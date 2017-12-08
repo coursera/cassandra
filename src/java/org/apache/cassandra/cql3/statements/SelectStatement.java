@@ -22,6 +22,7 @@ import java.util.*;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.AbstractIterator;
@@ -1182,7 +1183,7 @@ public class SelectStatement implements CQLStatement
             SecondaryIndexManager secondaryIndexManager = cfs.indexManager;
             secondaryIndexManager.validateIndexSearchersForQuery(expressions);
         }
-        
+
         return expressions;
     }
 
@@ -2180,7 +2181,7 @@ public class SelectStatement implements CQLStatement
             // the static parts. But 1) we don't have an easy way to do that with 2i and 2) since we don't support index on static columns
             // so far, 2i means that you've restricted a non static column, so the query is somewhat non-sensical.
             if (stmt.selectsOnlyStaticColumns)
-                throw new InvalidRequestException("Queries using 2ndary indexes don't support selecting only static columns");            
+                throw new InvalidRequestException("Queries using 2ndary indexes don't support selecting only static columns");
         }
 
         private void verifyOrderingIsAllowed(SelectStatement stmt) throws InvalidRequestException
@@ -2387,7 +2388,7 @@ public class SelectStatement implements CQLStatement
         @Override
         public String toString()
         {
-            return Objects.toStringHelper(this)
+            return MoreObjects.toStringHelper(this)
                           .add("name", cfName)
                           .add("selectClause", selectClause)
                           .add("whereClause", whereClause)

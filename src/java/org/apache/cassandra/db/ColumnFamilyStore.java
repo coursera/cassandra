@@ -1124,7 +1124,7 @@ public class ColumnFamilyStore implements ColumnFamilyStoreMBean
                 for (Memtable memtable : memtables)
                 {
                     // flush the memtable
-                    MoreExecutors.sameThreadExecutor().execute(memtable.flushRunnable());
+                    MoreExecutors.directExecutor().execute(memtable.flushRunnable());
                     reclaim(memtable);
                 }
             }

@@ -147,7 +147,7 @@ public class ColumnFamilyRecordReader extends RecordReader<ByteBuffer, SortedMap
         cfName = ConfigHelper.getInputColumnFamily(conf);
         consistencyLevel = ConsistencyLevel.valueOf(ConfigHelper.getReadConsistencyLevel(conf));
         keyspace = ConfigHelper.getInputKeyspace(conf);
-        
+
         if (batchSize < 2)
             throw new IllegalArgumentException("Minimum batchSize is 2.  Suggested batchSize is 100 or more");
 
@@ -229,7 +229,7 @@ public class ColumnFamilyRecordReader extends RecordReader<ByteBuffer, SortedMap
             CfDef cfDef = new CfDef();
             try
             {
-                partitioner = FBUtilities.newPartitioner(client.describe_partitioner());           
+                partitioner = FBUtilities.newPartitioner(client.describe_partitioner());
                 // get CF meta data
                 String query = "SELECT comparator," +
                                "       subcomparator," +
@@ -252,7 +252,7 @@ public class ColumnFamilyRecordReader extends RecordReader<ByteBuffer, SortedMap
                     ByteBuffer subComparator = cqlRow.columns.get(1).value;
                     if (subComparator != null)
                         cfDef.subcomparator_type = ByteBufferUtil.string(subComparator);
-                    
+
                     ByteBuffer type = cqlRow.columns.get(2).value;
                     if (type != null)
                         cfDef.column_type = ByteBufferUtil.string(type);
@@ -517,7 +517,7 @@ public class ColumnFamilyRecordReader extends RecordReader<ByteBuffer, SortedMap
                 if (this.rows.hasNext())
                     nextRow();
                 else
-                    columns = Iterators.emptyIterator();
+                    columns = Collections.emptyIterator();
             }
 
             private void nextRow()

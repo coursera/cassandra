@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 import org.apache.cassandra.config.CFMetaData;
@@ -135,7 +136,7 @@ public class RangeSliceCommand extends AbstractRangeCommand implements Pageable
     @Override
     public String toString()
     {
-        return Objects.toStringHelper(this)
+        return MoreObjects.toStringHelper(this)
                       .add("keyspace", keyspace)
                       .add("columnFamily", columnFamily)
                       .add("predicate", predicate)

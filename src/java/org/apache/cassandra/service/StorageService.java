@@ -3086,7 +3086,7 @@ public class StorageService extends NotificationBroadcasterSupport implements IE
                         {
                             sendNotification("repair", String.format("Repair command #%d finished", cmd), new int[]{cmd, ActiveRepairService.Status.FINISHED.ordinal()});
                         }
-                    }, MoreExecutors.sameThreadExecutor());
+                    }, MoreExecutors.directExecutor());
                 }
                 else
                 {

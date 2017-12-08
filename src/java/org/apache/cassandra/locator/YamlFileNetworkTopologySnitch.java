@@ -42,6 +42,7 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
 import com.google.common.net.InetAddresses;
@@ -59,7 +60,7 @@ public class YamlFileNetworkTopologySnitch
 {
 
     private static final Logger logger = LoggerFactory.getLogger(YamlFileNetworkTopologySnitch.class);
-    
+
     /**
      * How often to check the topology configuration file, in milliseconds; defaults to one minute.
      */
@@ -447,7 +448,7 @@ public class YamlFileNetworkTopologySnitch
          */
         public String toString()
         {
-            return Objects.toStringHelper(this).add("datacenter", datacenter)
+            return MoreObjects.toStringHelper(this).add("datacenter", datacenter)
                     .add("rack", rack).add("dcLocalAddress", dcLocalAddress)
                     .toString();
         }

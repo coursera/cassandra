@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 import org.slf4j.Logger;
@@ -167,7 +168,7 @@ public abstract class ExtendedFilter
     @Override
     public String toString()
     {
-        return Objects.toStringHelper(this)
+        return MoreObjects.toStringHelper(this)
                       .add("dataRange", dataRange)
                       .add("maxResults", maxResults)
                       .add("currentLimit", currentLimit)
@@ -201,7 +202,7 @@ public abstract class ExtendedFilter
         private IDiskAtomFilter computeOptimizedFilter()
         {
             /*
-             * We shouldn't do the "optimization" for composites as the index names are not valid column names 
+             * We shouldn't do the "optimization" for composites as the index names are not valid column names
              * (which the rest of the method assumes). Said optimization is not useful for composites anyway.
              * We also don't want to do for paging ranges as the actual filter depends on the row key (it would
              * probably be possible to make it work but we won't really use it so we don't bother).
@@ -455,7 +456,7 @@ public abstract class ExtendedFilter
         @Override
         public String toString()
         {
-            return Objects.toStringHelper(this)
+            return MoreObjects.toStringHelper(this)
                           .add("dataRange", dataRange)
                           .add("timestamp", timestamp)
                           .add("clause", clause)
